@@ -2,10 +2,10 @@
 
 Team Members
 
-- 
-- 
-- 
-- 
-- 
--
+- Inderpreet
+- Maricarmen
+- Sneha
+- Hui
+- Phoebe
+- Luxi
 
