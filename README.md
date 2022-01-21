@@ -1,4 +1,8 @@
-# MomsKitchen
+# Mom's Kitchen
+
+A Boston University CS633 Project
+
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
