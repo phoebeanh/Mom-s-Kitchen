@@ -1,0 +1,17 @@
+<h2>Mom's Menu</h2>
+
+<div *ngFor="let item of items">
+    <!--NAME OF ITEM-->
+    <a [title]="item.name + ' details'"
+        [routerLink]="['/items', item.id]">
+        {{ item.name }}
+      </a>
+
+    <!--DESCRIPTION-->
+    <p *ngIf="item.description">
+        Description: {{ item.description }}
+    </p>
+
+    <p><mat-divider></mat-divider></p>
+
+</div>
