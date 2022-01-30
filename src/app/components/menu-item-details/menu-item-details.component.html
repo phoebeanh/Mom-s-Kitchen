@@ -1,0 +1,13 @@
+<h2>Item Details</h2>
+
+<div *ngIf="item">
+  <h3>{{ item.name }}</h3>
+  <h4>{{ item.price }}</h4>
+  <span> 
+    <button (click)="decrementItemQuantity(item)" [disabled]="item.quantity <= 0" type="button" class="add-i-b valdown">-</button>
+    {{ item.quantity }}
+    <button (click)="incrementItemQuantity(item)"  type="button" class="add-i-b valup">+</button>
+  </span>
+  <p>{{ item.description }}</p>
+  <button [disabled]="item.quantity < 1" (click)="addToCart(item)">Add to Cart</button>
+</div>

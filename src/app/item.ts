@@ -6,6 +6,7 @@ export interface Item {
     mealType: string;
     isVegan: boolean;
     isVegetarian: boolean;
+    quantity: number;
 }
 
 // TEMPORARY HOLDING OF DUMMY DATA UNTIL DB IS SET UP
@@ -17,7 +18,8 @@ export const items = [
       description: 'A delicious dish with friend cauliflower and a savory sauce',
       mealType: 'Lunch',
       isVegan: false,
-      isVegetarian: false
+      isVegetarian: false,
+      quantity: 0
     },
     {
       id: 2,
@@ -26,7 +28,8 @@ export const items = [
       description: 'A spicy, deep-fried chicken dish originating from Hotel Buhari, Chennai, India, as an entrée, or quick snack',
       mealType: 'Lunch',
       isVegan: false,
-      isVegetarian: false
+      isVegetarian: false,
+      quantity: 0
     },
     {
       id: 3,
@@ -35,6 +38,7 @@ export const items = [
       description: 'A delicious kebab from the Mughlai cuisine, marinated with spices and yoghurt.',
       mealType: 'Lunch',
       isVegan: false,
-      isVegetarian: false
+      isVegetarian: false,
+      quantity: 0
     }
   ];

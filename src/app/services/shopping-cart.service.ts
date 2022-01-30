@@ -6,20 +6,34 @@ import { Injectable } from '@angular/core';
 })
 export class ShoppingCartService {
 
-  items: Item[] = [];
+  cartItems: Item[] = [];
 
   constructor() { }
 
   addToCart(item: Item) {
-    this.items.push(item);
+    this.cartItems.push(item);
   }
 
-  getItems() {
-    return this.items;
+  getCartItems() {
+    return this.cartItems;
+  }
+
+  removeCartItem(item: Item) {
+    this.cartItems.forEach((element, index)=>{
+      if(element==item) this.cartItems.splice(index,1);
+   });
   }
 
   clearCart() {
-    this.items = [];
-    return this.items;
+    this.cartItems = [];
+    return this.cartItems;
+  }
+
+  incrementItemQuantity(item: Item) {
+    item.quantity++;
+  }
+
+  decrementItemQuantity(item: Item) {
+    item.quantity--;
   }
 }
