@@ -1,6 +1,11 @@
-<h3>Cart</h3>
+<h2>Shopping Cart</h2>
 
 <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>
-  <span>{{ item.price }}</span>
+  <span>{{ (item.price * item.quantity) | currency }}</span>
+  <span> 
+    <button (click)="decrementItemQuantity(item)" [disabled]="item.quantity <= 0" type="button" class="add-i-b valdown">-</button>
+    {{ item.quantity }}
+    <button (click)="incrementItemQuantity(item)"  type="button" class="add-i-b valup">+</button>
+  </span>
 </div>
