@@ -9,6 +9,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from '@angular/material/divider';
 import { MenuItemDetailsComponent } from './menu-item-details/menu-item-details.component';
+//firebase
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 const appRoutes: Routes = [
   {
@@ -33,6 +38,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
     RouterModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
