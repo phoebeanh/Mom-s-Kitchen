@@ -43,7 +43,8 @@ const appRoutes: Routes = [
     RouterModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatDividerModule
+    MatDividerModule,
+    AngularFirestoreModule
   ],
   exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

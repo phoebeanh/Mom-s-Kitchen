@@ -1,1 +1,8 @@
-<p>menu-item-details works!</p>
+<h2>Item Details</h2>
+
+<div *ngIf="item">
+  <h3>{{ item.name }}</h3>
+  <h4>{{ item.price }}</h4>
+  <p>{{ item.description }}</p>
+  <button (click)="addToCart(item)">Add to Cart</button>
+</div>
