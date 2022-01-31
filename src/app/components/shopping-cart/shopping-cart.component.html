@@ -1,6 +1,6 @@
 <h2>Shopping Cart</h2>
 
-<button (click)="clearCart()" [disabled]="!items" type="button" class="add-i-b valdown">Clear</button>
+<p><button (click)="clearCart()" [disabled]="items.length == 0" type="button" class="add-i-b valdown">Clear</button></p>
 
 <div class="cart-item" *ngFor="let item of items">
   <span>{{ item.name }}</span>

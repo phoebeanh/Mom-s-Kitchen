@@ -9,6 +9,8 @@ export const environment = {
     apiKey: "AIzaSyAA8er--_1Jue7s4LaPkHIfOAKvQolL10k",
   
     authDomain: "cs633-moms-kitchen.firebaseapp.com",
+
+    databaseURL: "https://cs633-moms-kitchen-default-rtdb.firebaseio.com",
   
     projectId: "cs633-moms-kitchen",
   

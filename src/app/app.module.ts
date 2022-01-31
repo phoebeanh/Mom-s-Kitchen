@@ -11,9 +11,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MenuItemDetailsComponent } from './components/menu-item-details/menu-item-details.component';
 //firebase
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
 
 const appRoutes: Routes = [
   {
@@ -25,7 +25,7 @@ const appRoutes: Routes = [
       path: 'shopping-cart',
       component: ShoppingCartComponent
   },
-  { path: 'items/:itemId', component: MenuItemDetailsComponent },
+  { path: 'item', component: MenuItemDetailsComponent },
   ];
 
 @NgModule({
@@ -38,13 +38,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule.enablePersistence(),
     provideFirestore(() => getFirestore()),
     RouterModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatDividerModule,
-    AngularFirestoreModule
   ],
   exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

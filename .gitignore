@@ -16,6 +16,8 @@ firebase-debug.log
 .idea/
 .project
 .classpath
+.firebase
+.github
 .c9/
 *.launch
 .settings/

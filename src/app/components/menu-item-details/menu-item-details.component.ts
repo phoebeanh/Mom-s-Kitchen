@@ -2,7 +2,8 @@ import { ItemService } from './../../services/item.service';
 import { Item, items } from '../../item';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Navigation, Router } from '@angular/router';
+import { Entree } from 'src/app/models/entree';
 
 @Component({
   selector: 'app-menu-item-details',
@@ -11,20 +12,20 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MenuItemDetailsComponent implements OnInit {
 
-  item: Item | undefined;
+  item: any;
+  nav: any;
 
   constructor(private route: ActivatedRoute,
-    private cartService: ShoppingCartService,
-    private itemService: ItemService) { 
-      // First get the item id from the current route.
-    const routeParams = this.route.snapshot.paramMap;
-    const itemIdFromRoute = Number(routeParams.get('itemId'));
+    public cartService: ShoppingCartService,
+    public itemService: ItemService, private router: Router) {
+      this.nav = this.router.getCurrentNavigation();
 
-    // Find the item that correspond with the id provided in route.
-    this.item = this.itemService.getItems().find(item => item.id === itemIdFromRoute);
+      if (this.nav.extras && this.nav.extras.state && this.nav.extras.state['item']) {
+      this.item = this.nav.extras.state['item'] as Entree;
+      };
     }
 
-  ngOnInit(): void {}
+    ngOnInit() {}
 
   incrementItemQuantity(item: Item) {
     this.cartService.incrementItemQuantity(item);
