@@ -14,6 +14,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   {
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
