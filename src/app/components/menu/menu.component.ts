@@ -2,7 +2,7 @@ import { ItemService } from './../../services/item.service';
 import { Component, OnInit } from '@angular/core';
 import { Entree } from 'src/app/models/entree';
 import { Router } from '@angular/router';
-import { Item, Items } from 'src/app/models/items';
+import { Items } from 'src/app/models/items';
 
 @Component({
   selector: 'app-menu',

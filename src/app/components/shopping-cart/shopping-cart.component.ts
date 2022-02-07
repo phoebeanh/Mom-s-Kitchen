@@ -10,15 +10,13 @@ import { Item } from 'src/app/models/items';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  items = this.cartService.getCartItems();
-
   checkoutForm = this.formBuilder.group({
     name: '',
     address: ''
   });
 
-  constructor(private cartService: ShoppingCartService,
-    private formBuilder: FormBuilder) { }
+  constructor(public cartService: ShoppingCartService,
+    private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {}
 
@@ -35,12 +33,12 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   clearCart() {
-    this.items = this.cartService.clearCart();
+    this.cartService.clearCart();
   }
 
   onSubmit(): void {
     // Process checkout data here
-    this.items = this.cartService.clearCart();
+    this.cartService.clearCart();
     console.warn('Your order has been submitted', this.checkoutForm.value);
     this.checkoutForm.reset();
   }

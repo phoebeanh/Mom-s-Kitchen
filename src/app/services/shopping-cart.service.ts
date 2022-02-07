@@ -11,7 +11,16 @@ export class ShoppingCartService {
   constructor() { }
 
   addToCart(item: Item) {
-    this.cartItems.push(item);
+    let exists = false;
+    this.cartItems.forEach(c => {
+      if(c.name == item.name) {
+        exists = true;
+        c.quantity += item.quantity;
+      }
+    });
+    if (!exists) {
+      this.cartItems.push(item);
+    }
   }
 
   getCartItems() {
@@ -19,9 +28,7 @@ export class ShoppingCartService {
   }
 
   removeCartItem(item: Item) {
-    this.cartItems.forEach((element, index)=>{
-      if(element==item) this.cartItems.splice(index,1);
-   });
+    this.cartItems = this.cartItems.filter(c => {return c.name != item.name});
   }
 
   clearCart() {
@@ -35,5 +42,8 @@ export class ShoppingCartService {
 
   decrementItemQuantity(item: Item) {
     item.quantity--;
+    if (item.quantity == 0) {
+      this.removeCartItem(item);
+    }
   }
 }

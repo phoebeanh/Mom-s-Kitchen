@@ -1,14 +1,14 @@
 <h2>Shopping Cart</h2>
 
-<p><button (click)="clearCart()" [disabled]="items.length == 0" type="button" class="add-i-b valdown">Clear</button></p>
+<p><button (click)="clearCart()" [disabled]="cartService.cartItems.length == 0" type="button">Clear</button></p>
 
-<div class="cart-item" *ngFor="let item of items">
+<div class="cart-item" *ngFor="let item of cartService.cartItems">
   <span>{{ item.name }}</span>
-  <span>{{ (item.price * item.quantity) | currency }}</span>
+  <span>{{ (item.price * item.quantity) | currency }} CAD</span>
   <span> 
-    <button (click)="decrementItemQuantity(item)" [disabled]="item.quantity <= 0" type="button" class="add-i-b valdown">-</button>
+    <button (click)="decrementItemQuantity(item)" type="button">-</button>
     {{ item.quantity }}
-    <button (click)="incrementItemQuantity(item)"  type="button" class="add-i-b valup">+</button>
+    <button (click)="incrementItemQuantity(item)" [disabled]="item.quantity >= 5" type="button">+</button>
   </span>
   <span><button (click)="deleteItem(item)"><i class="material-icons">delete</i></button></span>
 </div>

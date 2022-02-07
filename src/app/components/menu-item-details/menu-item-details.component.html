@@ -9,7 +9,7 @@
     <p>
       <button (click)="decrementItemQuantity(item)" [disabled]="item.quantity <= 0" type="button" class="add-i-b valdown">-</button>
       {{ item.quantity }}
-      <button (click)="incrementItemQuantity(item)"  type="button" class="add-i-b valup">+</button>
+      <button (click)="incrementItemQuantity(item)" [disabled]="item.quantity >= 5" type="button" class="add-i-b valup">+</button>
     </p> 
   </span>
 
