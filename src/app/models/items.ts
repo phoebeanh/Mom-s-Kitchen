@@ -1,6 +1,16 @@
 import { Entree } from "./entree"
 
-export interface Items{
+export interface Item {
+  id: number;
+  name: string;
+  price: number;
+  description: string;
+  mealType: string;
+  isVegan: boolean;
+  isVegetarian: boolean;
+  quantity: number;
+}
+export interface ItemsInterface{
     appetizers: Entree[];
     bread: Entree[];
     breakfast: Entree[];
@@ -12,7 +22,7 @@ export interface Items{
     soups: Entree[];
   }
 
-  export class Item implements Items {
+  export class Items implements ItemsInterface {
     appetizers: Entree[] = []; 
     bread: Entree[] = [];
     breakfast: Entree[] = [];

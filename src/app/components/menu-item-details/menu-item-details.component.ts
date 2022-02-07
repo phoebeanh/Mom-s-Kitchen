@@ -1,9 +1,9 @@
 import { ItemService } from './../../services/item.service';
-import { Item, items } from '../../item';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Navigation, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Entree } from 'src/app/models/entree';
+import { Item } from 'src/app/models/items';
 
 @Component({
   selector: 'app-menu-item-details',

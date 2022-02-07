@@ -11,12 +11,12 @@ import { Item, Items } from 'src/app/models/items';
 })
 export class MenuComponent implements OnInit {
 
-  items : Item;
+  items : Items;
   filteredItems : Entree[];
   filters: Array<any> | undefined;
 
   constructor(private itemService: ItemService, private router : Router) {
-    this.items = new Item();
+    this.items = new Items();
     this.filteredItems = [];
   }
 
