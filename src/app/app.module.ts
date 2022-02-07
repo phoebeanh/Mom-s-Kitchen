@@ -8,6 +8,7 @@ import { HeaderBarComponent } from './components/header-bar/header-bar.component
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MenuItemDetailsComponent } from './components/menu-item-details/menu-item-details.component';
 //firebase
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatDividerModule,
+    MatCheckboxModule
   ],
   exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,0 +1,17 @@
+mat-checkbox {
+    margin-right: 12px;
+}
+
+h1 {
+    display: flex;
+    color: #cacaca;
+    align-content: center;
+    justify-content: center;
+    margin: 4px;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    margin: 4px;
+}

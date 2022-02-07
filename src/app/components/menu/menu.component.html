@@ -1,17 +1,38 @@
 <h2>Mom's Menu</h2>
 
-<div *ngFor="let entree of entrees">
-    <!--NAME OF ITEM-->
-    <a [title]="entree.name + ' details'"
-        (click)="routeTo(entree)">
-        {{ entree.name }}
-      </a>
+<p><mat-divider></mat-divider></p>
 
-    <!--DESCRIPTION-->
-    <p *ngIf="entree.description">
-        Description: {{ entree.description }}
-    </p>
+<span *ngFor="let filter of filters">
+    <mat-checkbox [checked]="filter.checked" (change)="onCheckboxChange(filter)">
+        {{filter.name}}
+    </mat-checkbox>
+</span>
 
-    <p><mat-divider></mat-divider></p>
+<p><mat-divider></mat-divider></p>
 
-</div>
+<ng-container *ngIf="!isEmpty()">
+    <div *ngFor="let item of filteredItems">
+        <!--NAME OF ITEM-->
+        <a [title]="item.name + ' details'"
+            (click)="routeTo(item)">
+            {{ item.name }}
+        </a>
+
+        <!--DESCRIPTION-->
+        <p *ngIf="item.description">
+            Description: {{ item.description }}
+        </p>
+
+        <!--PRICE-->
+        <p *ngIf="item.price">
+            Price: {{item.price | currency}} CAD
+        </p>
+
+        <p><mat-divider></mat-divider></p>
+
+    </div>
+</ng-container>
+
+<ng-container *ngIf="isEmpty()">
+    <h1>Please select a category</h1>
+</ng-container>
