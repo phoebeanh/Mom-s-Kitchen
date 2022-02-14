@@ -1,0 +1,4 @@
+.buttons-bottom {
+    display: flex;
+    justify-content: space-between;
+}

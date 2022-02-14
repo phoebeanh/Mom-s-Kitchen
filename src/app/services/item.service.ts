@@ -37,22 +37,4 @@ export class ItemService {
   getAll(): Observable<Items> {
     return this.all;
   }
-
-  // create(data: Entree, name : string) {
-  //   return this.db
-  //   .collection("Items/" + name)
-  //   .add(data);
-  // }
-
-//   update(data : Entree) {
-//     return this.db
-//       .doc('Entrees/' + data.idField)
-//       .update(data);
-//  }
-
-//  delete(data: Entree) {
-//   return this.db
-//       .doc("Entrees/" + data.idField)
-//       .delete();
-//   }
 }

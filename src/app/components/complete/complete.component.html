@@ -1,0 +1,32 @@
+<h2>Your Order is On Its Way!</h2>
+
+<h3>Confirmation Number: {{confirmationNumber}}</h3>
+
+<h2><mat-label>Your Order</mat-label></h2>
+<br>
+<div class="cart-item" *ngFor="let item of cartService.cartItems">
+    <span>{{ item.name }}</span>
+    <span>{{ (item.price * item.quantity) | currency }} CAD</span>
+</div>
+
+<p><mat-divider></mat-divider></p>
+
+<h2><mat-label>Your Booking Information</mat-label></h2>
+<br>
+<mat-list>
+    <mat-list-item>Name: {{booking.name}} </mat-list-item>
+    <mat-list-item>Email: {{booking.email}} </mat-list-item>
+    <mat-list-item>Contact Number: {{booking.contactNumber}} </mat-list-item>
+</mat-list>
+
+<p><mat-divider></mat-divider></p>
+
+<h2><mat-label>Your Payment Information</mat-label></h2>
+<br>
+<div *ngIf="isStorePay">
+    Payment at Store
+</div>
+<div *ngIf="!isStorePay">
+    Payment with XXXX XXXX XXXX {{last4Digits}}
+</div>
+    

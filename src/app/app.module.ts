@@ -10,12 +10,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MenuItemDetailsComponent } from './components/menu-item-details/menu-item-details.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
 //firebase
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/'; 
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BookingInfoComponent } from './components/booking-info/booking-info.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { NgxCcModule } from 'ngx-cc';
+import { CompleteComponent } from './components/complete/complete.component';
+import {MatListModule} from '@angular/material/list';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +37,9 @@ const appRoutes: Routes = [
       component: ShoppingCartComponent
   },
   { path: 'item', component: MenuItemDetailsComponent },
+  { path: 'booking', component: BookingInfoComponent},
+  { path: 'payment', component: PaymentComponent},
+  { path: 'complete', component: CompleteComponent}
   ];
 
 @NgModule({
@@ -36,7 +48,10 @@ const appRoutes: Routes = [
     MenuComponent,
     ShoppingCartComponent,
     HeaderBarComponent,
-    MenuItemDetailsComponent
+    MenuItemDetailsComponent,
+    BookingInfoComponent,
+    PaymentComponent,
+    CompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +64,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MatDividerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    NgxCcModule,
+    MatListModule
   ],
   exports: [RouterModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

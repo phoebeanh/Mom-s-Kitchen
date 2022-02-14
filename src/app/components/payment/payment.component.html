@@ -1,0 +1,32 @@
+
+<h2><mat-label>Complete Your Payment</mat-label></h2>
+
+<mat-radio-group (change)="onChange($event)">
+    <p><mat-radio-button value="store">Pay On Delivery</mat-radio-button></p>
+    <p><mat-radio-button value="debit">Debit Card</mat-radio-button></p>
+    <p><mat-radio-button value="credit">Credit Card</mat-radio-button></p>
+</mat-radio-group>
+
+<form class="cc-form" [formGroup]="form">
+    <mat-form-field class="ngx-cc-form-field">
+      <ngx-cc name="cardNumber" styleClass="card" formControlName="creditCard"></ngx-cc>
+      <mat-placeholder>0000 0000 0000 0000</mat-placeholder>
+      <mat-error *ngIf="form.controls['creditCard'].invalid">Card number is not valid</mat-error>
+    </mat-form-field>
+    <div class="cc-date-cvv-container">
+      <mat-form-field class="ngx-cc-form-field">
+          <ngx-cc-date formControlName="creditCardDate"></ngx-cc-date>
+          <mat-placeholder>MM / YY</mat-placeholder>
+          <mat-error *ngIf="form.controls['creditCardDate'].invalid">Expiration date is not valid</mat-error>
+      </mat-form-field>
+      <mat-form-field class="ngx-cc-form-field">
+          <ngx-cc-cvv formControlName="creditCardCvv"></ngx-cc-cvv>
+          <mat-placeholder>CVV</mat-placeholder>
+          <mat-error *ngIf="form.controls['creditCardCvv'].invalid">Security code is not valid</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="btn-container">
+    </div>
+  </form>
+
+  <button (click)="onClick()" [disabled]="form.invalid && !storePay" mat-raised-button color="primary">Complete Payment</button>

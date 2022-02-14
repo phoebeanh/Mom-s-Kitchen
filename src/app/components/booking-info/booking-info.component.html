@@ -1,0 +1,81 @@
+<h1><mat-label>Complete Booking</mat-label></h1>
+<p><mat-divider></mat-divider></p>
+
+<div *ngIf="cartService.cartItems.length > 0">
+  <form class="form-container" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+
+    <h2>Contact Information</h2>
+      <p>
+        <mat-form-field  appearance="fill">
+          <mat-label for="name">Name: </mat-label>
+          <input matInput placeholder="Name" id="name" type="text" formControlName="name">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label for="email">E-mail: </mat-label>
+          <input matInput id="email" type="text" formControlName="email">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label for="contactNumber">Contact Number: </mat-label>
+          <input matInput id="contactNumber" type="text" formControlName="contactNumber">
+        </mat-form-field>
+      </p>
+
+      <p><mat-divider></mat-divider></p>
+
+      <h2>Shipping Options</h2>
+      <div formGroupName="shippingInfo">
+        <mat-radio-group>
+          <mat-radio-button (change)="shippingChange($event)" value="pickup">Pick Up:</mat-radio-button>
+
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label for="pickup">Select Location: </mat-label>
+              <mat-select matSelect id="pickup" formControlName="pickup">
+                <mat-option *ngFor="let location of locations" [value]="location">
+                  {{location}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+
+          <p><mat-radio-button (change)="shippingChange($event)" value="delivery">Delivery:</mat-radio-button></p>
+          
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label for="zipcode">Select servicable zipcode: </mat-label>
+              <mat-select id="zipcode" formControlName="zipcode">
+                <mat-option *ngFor="let zipcode of zipCodes" [value]="zipcode">
+                  {{zipcode}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field appearance="fill">
+              <mat-label for="deliveryAddress">Delivery Address: </mat-label>
+              <input matInput id="deliveryAddress" type="text" formControlName="deliveryAddress">
+            </mat-form-field>
+          </p>
+        </mat-radio-group>
+      </div>
+
+      <p><mat-divider></mat-divider></p>
+
+      <div class="buttons-bottom">
+        <button type="button" [routerLink]="['/shopping-cart']">Continue Shopping</button>
+        <button type="submit" [disabled]="!bookingForm.valid">Proceed to Pay</button>
+      </div>
+    
+    </form>
+</div>
+<div *ngIf="cartService.cartItems.length == 0">
+  <mat-label>There are no items in the shopping cart.</mat-label>
+  <p><button [routerLink]="['/']" type="submit">Back</button></p>
+</div>

@@ -10,10 +10,7 @@ import { Item } from 'src/app/models/items';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  checkoutForm = this.formBuilder.group({
-    name: '',
-    address: ''
-  });
+  router: any;
 
   constructor(public cartService: ShoppingCartService,
     private formBuilder: FormBuilder) {}
@@ -39,7 +36,6 @@ export class ShoppingCartComponent implements OnInit {
   onSubmit(): void {
     // Process checkout data here
     this.cartService.clearCart();
-    console.warn('Your order has been submitted', this.checkoutForm.value);
-    this.checkoutForm.reset();
+    this.router.navigate(['/booking']);
   }
 }
