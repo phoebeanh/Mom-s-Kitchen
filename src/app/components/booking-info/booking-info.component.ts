@@ -32,12 +32,16 @@ export class BookingInfoComponent implements OnInit {
   bookingForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      contactNumber: ['',  Validators.compose([Validators.required, Validators.minLength(10)])],
+      contactNumber: ['',  Validators.compose([Validators.required, Validators.minLength(10), Validators.pattern('^[0-9]*$')])],
       shippingInfo: this.fb.group({
-        pickup: [{value:null, disabled: true}],
-        zipcode: [{value:null, disabled: true}],
-        deliveryAddress: [{value:null, disabled:true}]
-      } )
+        pickup: this.fb.group({
+          pickup: [{value:null, disabled: true}, Validators.required]
+        }),
+        delivery: this.fb.group({
+          zipcode: [{value:null, disabled: true}, Validators.required],
+          deliveryAddress: [{value:null, disabled:true}, Validators.required]
+        })
+      })
   });
 
 
@@ -56,13 +60,13 @@ export class BookingInfoComponent implements OnInit {
 
   shippingChange(event: MatRadioChange) {
     if(event.value == 'pickup') {
-      this.bookingForm.get(['shippingInfo', 'pickup'])?.enable();
-      this.bookingForm.get(['shippingInfo', 'zipcode'])?.disable();
-      this.bookingForm.get(['shippingInfo','deliveryAddress'])?.disable();
+      this.bookingForm.get(['shippingInfo','pickup', 'pickup'])?.enable();
+      this.bookingForm.get(['shippingInfo','delivery', 'zipcode'])?.disable();
+      this.bookingForm.get(['shippingInfo','delivery','deliveryAddress'])?.disable();
     } else if (event.value == 'delivery') {
-      this.bookingForm.get(['shippingInfo','pickup'])?.disable();
-      this.bookingForm.get(['shippingInfo', 'zipcode'])?.enable();
-      this.bookingForm.get(['shippingInfo','deliveryAddress'])?.enable();
+      this.bookingForm.get(['shippingInfo','pickup','pickup'])?.disable();
+      this.bookingForm.get(['shippingInfo','delivery', 'zipcode'])?.enable();
+      this.bookingForm.get(['shippingInfo','delivery','deliveryAddress'])?.enable();
     }
 
     this.shipping = true;

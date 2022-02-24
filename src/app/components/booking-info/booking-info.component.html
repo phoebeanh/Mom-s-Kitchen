@@ -32,37 +32,38 @@
       <div formGroupName="shippingInfo">
         <mat-radio-group>
           <mat-radio-button (change)="shippingChange($event)" value="pickup">Pick Up:</mat-radio-button>
-
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label for="pickup">Select Location: </mat-label>
-              <mat-select matSelect id="pickup" formControlName="pickup">
-                <mat-option *ngFor="let location of locations" [value]="location">
-                  {{location}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </p>
-
+          <div formGroupName="pickup">
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label for="pickup">Select Location: </mat-label>
+                <mat-select matSelect id="pickup" formControlName="pickup">
+                  <mat-option *ngFor="let location of locations" [value]="location">
+                    {{location}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
+          </div>
           <p><mat-radio-button (change)="shippingChange($event)" value="delivery">Delivery:</mat-radio-button></p>
-          
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label for="zipcode">Select servicable zipcode: </mat-label>
-              <mat-select id="zipcode" formControlName="zipcode">
-                <mat-option *ngFor="let zipcode of zipCodes" [value]="zipcode">
-                  {{zipcode}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </p>
+          <div formGroupName="delivery">
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label for="zipcode">Select servicable zipcode: </mat-label>
+                <mat-select id="zipcode" formControlName="zipcode">
+                  <mat-option *ngFor="let zipcode of zipCodes" [value]="zipcode">
+                    {{zipcode}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </p>
 
-          <p>
-            <mat-form-field appearance="fill">
-              <mat-label for="deliveryAddress">Delivery Address: </mat-label>
-              <input matInput id="deliveryAddress" type="text" formControlName="deliveryAddress">
-            </mat-form-field>
-          </p>
+            <p>
+              <mat-form-field appearance="fill">
+                <mat-label for="deliveryAddress">Delivery Address: </mat-label>
+                <input matInput id="deliveryAddress" type="text" formControlName="deliveryAddress">
+              </mat-form-field>
+            </p>
+          </div>
         </mat-radio-group>
       </div>
 
