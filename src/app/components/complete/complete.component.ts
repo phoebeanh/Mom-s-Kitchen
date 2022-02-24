@@ -15,6 +15,7 @@ export class CompleteComponent implements OnInit {
   confirmationNumber : number;
   booking: Booking = new Booking();
   payment: Payment = new Payment();
+  date = new Date();
 
   last4Digits: string = '';
 
@@ -34,6 +35,8 @@ export class CompleteComponent implements OnInit {
     if(!this.isStorePay) {
       this.last4Digits = this.payment.creditCard.substring(this.payment.creditCard.length-4);
     }
+
+    this.cartService.clearCart();
     
   }
 

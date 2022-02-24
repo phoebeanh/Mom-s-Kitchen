@@ -12,7 +12,6 @@
 <p><mat-divider></mat-divider></p>
 
 <h2><mat-label>Your Booking Information</mat-label></h2>
-<br>
 <mat-list>
     <mat-list-item>Name: {{booking.name}} </mat-list-item>
     <mat-list-item>Email: {{booking.email}} </mat-list-item>
@@ -21,12 +20,20 @@
 
 <p><mat-divider></mat-divider></p>
 
-<h2><mat-label>Your Payment Information</mat-label></h2>
-<br>
-<div *ngIf="isStorePay">
-    Payment at Store
+<div>
+    <h2><mat-label>Your Payment Information</mat-label></h2>
+    <p>
+        Payment Date: {{date | date}}
+    </p>
+    <p></p>
+        <div *ngIf="isStorePay">
+            Status: <b>UNPAID</b>
+            <br>
+            Payment on Delivery
+        </div>
+        <div *ngIf="!isStorePay">
+            Status: <b>PAID</b>
+            <br>
+            Payment with XXXX XXXX XXXX {{last4Digits}}
+        </div>
 </div>
-<div *ngIf="!isStorePay">
-    Payment with XXXX XXXX XXXX {{last4Digits}}
-</div>
-    

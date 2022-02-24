@@ -70,7 +70,7 @@
 
       <div class="buttons-bottom">
         <button type="button" [routerLink]="['/shopping-cart']">Continue Shopping</button>
-        <button type="submit" [disabled]="!bookingForm.valid">Proceed to Pay</button>
+        <button type="submit" [disabled]="!bookingForm.valid || !shipping">Proceed to Pay</button>
       </div>
     
     </form>
